@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	.container
+		.row.col-md-6.col-md-offset-3
+			h1= title
+			p.lead Welcome to #{sub}
+			button.btn.btn-primary.btn-lg.next(type="button", data-place="") Next up: #{next}
+
+script(src="/javascripts/main.js")
