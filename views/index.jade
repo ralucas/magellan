@@ -2,9 +2,13 @@ extends layout
 
 block content
 	.container
-		.row.col-md-6.col-md-offset-3
-			h1= title
+		.row.col-md-6.col-md-offset-3#cities
+			h1.title= title
 			p.lead Welcome to #{sub}
-			button.btn.btn-primary.btn-lg.next(type="button", data-place="") Next up: #{next}
+			button.btn.btn-primary.btn-lg.next(type="button", data-place="#{next_id}") Next up: #{next}
 
-script(src="/javascripts/main.js")
+	script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+	script(src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
+	script(src="/javascripts/main.js")
+
+	include template.html

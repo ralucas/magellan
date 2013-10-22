@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -33,41 +32,55 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 
 
-var getCity = function (place, f){
-	fs.readFile(__dirname + '/public/javascripts/data.js', function (err, data){
+// var getCity = function (place, f){
+// 	fs.readFile(__dirname + '/public/javascripts/data.js', function (err, data){
+// 		if(err){console.log(err);}
+// 		var places = JSON.parse(data);
+// 		f(places[place]);
+// 	});
+// };
+
+app.get('/loc', function (req, res){
+	var nextPlace = req.query.next;
+	console.log('nextPlace',nextPlace);
+		fs.readFile(__dirname + '/public/javascripts/data.js', function (err, data){
 		if(err){console.log(err);}
 		var places = JSON.parse(data);
-		f(places[place]);
-	});
-}
-
-app.get('/seville', function (req, res){
-	getCity('seville', function (place){
-		res.render('index', place);
+		console.log('place', places[nextPlace]);
+		res.send(places[nextPlace]);
 	});
 });
 
-app.get('/canary_islands', function (req, res){
-	getCity('canary_islands', function (place){
-		res.render('index', place);
-	});
-});
+// app.get('/:nextPlace', function (req, res){
+// 	console.log('hello');
+// 	res.render('index', places[nextPlace]);
+// });
 
-app.get('/cape_verde', function (req, res){
-	res.render('index', {title: 'Cape Verde'});
-})
+// app.get('/seville', function (req, res){
+// 		res.render('index', {title: 'Seville'});
+// });
 
-app.get('/strait_of_magellan', function (req, res){
-	res.render('index', {title: 'Strait of Magellan'});
-});
+// app.get('/canary_islands', function (req, res){
+// 	getCity('canary_islands', function (place){
+// 		res.render('index', place);
+// 	});
+// });
 
-app.get('/guam', function (req, res){
-	res.render('index', {title: 'Guam'});
-});
+// app.get('/cape_verde', function (req, res){
+// 	res.render('index', {title: 'Cape Verde'});
+// });
 
-app.get('/philippines', function (req, res){
-	res.render('index', {title: 'Philippines'});
-});
+// app.get('/strait_of_magellan', function (req, res){
+// 	res.render('index', {title: 'Strait of Magellan'});
+// });
+
+// app.get('/guam', function (req, res){
+// 	res.render('index', {title: 'Guam'});
+// });
+
+// app.get('/philippines', function (req, res){
+// 	res.render('index', {title: 'Philippines'});
+// });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
