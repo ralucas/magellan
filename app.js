@@ -47,40 +47,10 @@ app.get('/loc', function (req, res){
 		if(err){console.log(err);}
 		var places = JSON.parse(data);
 		console.log('place', places[nextPlace]);
+		res.setHeader('/',nextPlace);
 		res.send(places[nextPlace]);
 	});
 });
-
-// app.get('/:nextPlace', function (req, res){
-// 	console.log('hello');
-// 	res.render('index', places[nextPlace]);
-// });
-
-// app.get('/seville', function (req, res){
-// 		res.render('index', {title: 'Seville'});
-// });
-
-// app.get('/canary_islands', function (req, res){
-// 	getCity('canary_islands', function (place){
-// 		res.render('index', place);
-// 	});
-// });
-
-// app.get('/cape_verde', function (req, res){
-// 	res.render('index', {title: 'Cape Verde'});
-// });
-
-// app.get('/strait_of_magellan', function (req, res){
-// 	res.render('index', {title: 'Strait of Magellan'});
-// });
-
-// app.get('/guam', function (req, res){
-// 	res.render('index', {title: 'Guam'});
-// });
-
-// app.get('/philippines', function (req, res){
-// 	res.render('index', {title: 'Philippines'});
-// });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
