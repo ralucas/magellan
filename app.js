@@ -47,7 +47,6 @@ app.get('/loc', function (req, res){
 		if(err){console.log(err);}
 		var places = JSON.parse(data);
 		console.log('place', places[nextPlace]);
-		res.setHeader('/',nextPlace);
 		res.send(places[nextPlace]);
 	});
 });
